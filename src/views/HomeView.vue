@@ -15,3 +15,10 @@ export default {
     <p>This page has been visited 30 times.</p>
   </main>
 </template>
+
+<style lang="scss">
+@import '@/assets/scss/global.scss';
+main {
+  background: $primary-color;
+}
+</style>
