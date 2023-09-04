@@ -1,5 +1,17 @@
-<script setup></script>
+<script>
+import { useI18n } from 'vue-i18n'
+export default {
+  setup() {
+    const { t } = useI18n()
+    return { t }
+  }
+}
+</script>
 
 <template>
-  <main></main>
+  <main>
+    <h1>{{ t('home.header') }}</h1>
+    <p>{{ t('home.created_by') }}</p>
+    <p>This page has been visited 30 times.</p>
+  </main>
 </template>
