@@ -3,8 +3,23 @@ import Navbar from '@/components/Navbar.vue'
 </script>
 
 <template>
-  <Navbar></Navbar>
-  <RouterView />
+  <div class="container">
+    <Navbar></Navbar>
+    <RouterView />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+@import '@/assets/scss/global.scss';
+.container {
+  border: solid 1px white;
+  padding: 0.5rem;
+  width: 95%;
+  height: auto;
+  margin: 0 auto;
+
+  @include large-screen {
+    width: 1500px;
+  }
+}
+</style>

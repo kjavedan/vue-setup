@@ -87,7 +87,7 @@
   }
 }
 @mixin large-screen {
-  @media screen and (min-width: 1700px) {
+  @media screen and (min-width: 1500px) {
     @content;
   }
 }

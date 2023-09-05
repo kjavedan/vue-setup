@@ -5,18 +5,15 @@
 *,
 ::before,
 ::after {
-  // margin: 0;
-  // padding: 0;
-  // box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
+#app {
+  width: 100vw;
+  height: 100vh;
+  background-color: $bg-bg-color;
+  color: $primary-text-color;
 }
 
-.el-button {
-  background-color: red;
-
-}
-.el-input {
-  border-radius: 10px;
-}

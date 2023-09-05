@@ -17,10 +17,13 @@ const Trans = {
     },
   init() {
     // Check if the user-locale exists in localStorage.
+    let locale;
     const userLocale = localStorage.getItem("user-locale");
     
     if (userLocale && this.supportedLocales.includes(userLocale)) {
+      console.log(userLocale)
       this.currentLocale = userLocale;
+      locale = userLocale
     } else {
       // Check the user's browser's default language.
       const browserDefaultLocale = navigator.language || navigator.userLanguage;
@@ -29,16 +32,16 @@ const Trans = {
         this.currentLocale = browserDefaultLocale;
       } else {
         // Default to a fallback locale if both user-locale and browser default are unsupported.
-        const fallbackLocale = "en"; 
+        const fallbackLocale = import.meta.env.VITE_DEFAULT_LOCALE; 
         this.currentLocale = fallbackLocale;
       }
       
       // Update user-locale in localStorage.
-      localStorage.setItem("user-locale", this.currentLocale);
+      localStorage.setItem("user-locale", this.currentLocale );
     }
-    
+    console.log(this.currentLocale)
     // Set the lang attribute for the HTML element.
-    document.querySelector("html").setAttribute("lang", this.currentLocale);
+    document.querySelector("html").setAttribute("lang", this.currentLocale ? this.currentLocale : locale);
   }
   
 };

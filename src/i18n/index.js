@@ -1,30 +1,71 @@
 import { createI18n } from 'vue-i18n'
 
+// This object contains the app full text in 3 languages: Chinese, Thai, and Vietnamese 
 const messages = {
-  en: {
+  zh: {
     nav: {
-      home: "Home",
-      about: "About"
+      home: "首页",
+      leagueResults: "联赛结果",
+      faq: "FAQ",
+      aboutUs: "关于我们",
+      contactUs: "联系我们"
     },
-    home: {
-      header: "Welcome to the Vue 3 I18n tutorial!",
-      created_by: "This tutorial was brought to you by Lokalise."
-    },
-    about: {
-      header: "About us"
+    leagueResults: {
+      issue: "期号",
+      startingTime: "开始时间",
+      endTime: "结束时间",
+      result: "结果",
+      operate: "操作",
+      playback: "回放",
+      goTo: "前往",
+      page: "页",
+      itemsInTotal: "总共",
+      itemsPerPage: "每页",
+      live: "直播"
     }
   },
-  ar: {
+  tai: {
     nav: {
-      home: "Главная",
-      about: "О нас"
+      home: "Trang đầu",
+      leagueResults: "Kết quả giải đấu",
+      faq: "FAQ",
+      aboutUs: "Về chúng tôi",
+      contactUs: "Liên hệ chúng tôi"
     },
-    home: {
-      header: "Добро пожаловать в руководство Vue 3 I18n!",
-      created_by: "Это руководство создано для вас компанией Lokalise."
+    leagueResults: {
+      issue: "เลขที่",
+      startingTime: "เวลาเริ่มต้น",
+      endTime: "เวลาสิ้นสุด",
+      result: "ผลลัพธ์",
+      operate: "ดำเนินงาน",
+      playback: "เล่นกลับ",
+      goTo: "ไปที่",
+      page: "หน้า",
+      itemsInTotal: "รวม",
+      itemsPerPage: "ต่อหน้า",
+      live: "สตรีมมิงแบบสด"
+    }
+  },
+  yue: {
+    nav: {
+      home: "หน้าแรก",
+      leagueResults: "ผลการแข่งขันลีก",
+      faq: "FAQ",
+      aboutUs: "เกี่ยวกับเรา",
+      contactUs: "ติดต่อเรา"
     },
-    about: {
-      header: "О нас"
+    leagueResults: {
+      issue: "KHÔNG.",
+      startingTime: "thời gian bắt đầu",
+      endTime: "Thời gian kết thúc",
+      result: "kết quả",
+      operate: "vận hành",
+      playback: "phát lại",
+      goTo: "đi đến",
+      page: "trang",
+      itemsInTotal: "Tổng cộng",
+      itemsPerPage: "mỗi trang",
+      live: "video trực tiếp"
     }
   }
 }

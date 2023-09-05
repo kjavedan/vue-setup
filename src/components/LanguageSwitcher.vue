@@ -1,14 +1,9 @@
 <template>
-  <select @change="switchLanguage">
-    <option
-      v-for="sLocale in supportedLocales"
-      :key="`locale-${sLocale}`"
-      :value="sLocale"
-      :selected="locale === sLocale"
-    >
+  <el-select @change="switchLanguage" v-model="locale" class="el-select">
+    <el-option v-for="sLocale in supportedLocales" :key="sLocale" :value="sLocale" :label="sLocale">
       {{ sLocale }}
-    </option>
-  </select>
+    </el-option>
+  </el-select>
 </template>
 
 <script>
@@ -18,14 +13,16 @@ import Trans from '@/i18n/translation'
 export default {
   setup() {
     const { t, locale } = useI18n()
-
     const supportedLocales = Trans.supportedLocales
 
-    const switchLanguage = async (event) => {
-      const newLocale = event.target.value
-      await Trans.switchLanguage(newLocale)
+    const switchLanguage = async (newLocale) => {
+      // setLocale(newLocale)
+      Trans.switchLanguage(newLocale)
     }
+
     return { t, locale, supportedLocales, switchLanguage }
   }
 }
 </script>
+
+<style scoped lang="scss"></style>
