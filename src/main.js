@@ -1,4 +1,5 @@
 import '@/assets/scss/global.scss'
+
 import 'element-plus/dist/index.css'
 
 import { createApp } from 'vue/dist/vue.esm-bundler'

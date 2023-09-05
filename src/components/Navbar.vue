@@ -16,6 +16,7 @@ export default {
         <RouterLink to="/about">{{ $t('nav.about') }}</RouterLink>
       </li>
     </ul>
+    <el-button>{{ $t('nav.home') }}</el-button>
   </nav>
   <LanguageSwitcher></LanguageSwitcher>
 </template>
