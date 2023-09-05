@@ -72,8 +72,8 @@ const handleSelect = (key, keyPath) => {
     background-color: $bg-nav-color;
     border-radius: 8px;
     box-shadow:
-      rgba(0, 0, 0, 0.4) 0px 3px 4px,
-      rgba(21, 15, 15, 0.3) 0px 7px 23px -3px,
+      rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
       rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 100%;
     border-bottom: none;
