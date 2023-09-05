@@ -15,7 +15,8 @@ import Navbar from '@/components/Navbar.vue'
   border: solid 1px white;
   padding: 0.5rem;
   width: 95%;
-  height: auto;
+  // height: 100vh;
+
   margin: 0 auto;
 
   @include large-screen {
