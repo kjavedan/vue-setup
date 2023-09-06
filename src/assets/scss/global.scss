@@ -13,19 +13,21 @@
 html{
   /* Hide the scrollbar track and buttons */
 ::-webkit-scrollbar {
-  width: 8px; /* Adjust the width to your preference */
+  width: 6px; /* Adjust the width to your preference */
+  height: 6px;
   background-color: transparent;
 }
 
 /* Style the scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(46, 46, 46); /* Color of the thumb */
+  background-color: rgb(0, 0, 0); /* Color of the thumb */
   border-radius: 8px; /* Set the thumb's border-radius */
 }
 
 /* Optional: Style the scrollbar on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #333; /* Hover color for the thumb */
+  width: 6px; /* Adjust the width to your preference */
+  background-color: #000000; /* Hover color for the thumb */
 }
 
 }
@@ -38,7 +40,51 @@ body{
   width: 100vw;
   height: 100vh;
   color: $primary-text-color;
+  overflow-x: hidden;
+  .el-pagination__total,
+  .el-pagination__jump {
+    color: #abacaf;
+    // background-color: #000000;
+  }
+  .el-pagination.is-background .el-pager li {
+    background-color: #000000;
+    color: #818285;
+  }
+  .el-input__inner {
+    background-color: transparent;
+    color: #c3c2c2;
+    border: 1px solid #827c7c;
+  }
+  .el-pagination.is-background .el-pager li:not(.disabled).active {
+    background-color: #000000;
+    color: #afafaf;
+  }
+  .el-pagination.is-background .el-pager li.is-active{
+    background-color: #409eff;
+    color: #fff;
+  }
+  .el-pagination.is-background .btn-prev,
+  .el-pagination.is-background .btn-next {
+    background-color: #000000;
+  }
+  .el-pagination {
+    padding: 30px 5px 10px;
+  }
 
-  
+  .el-input__inner {
+    border: unset;
+  }
+  .el-input__wrapper {
+    background: unset;
+  }
+  .el-menu--horizontal>.el-sub-menu .el-sub-menu__title{
+    color: white;
+    &:hover{
+      background-color: black;
+    }
+  }
+  .el-sub-menu is-opened el-sub-menu__hide-arrow{
+    background-color: black;
+  }
 }
 
