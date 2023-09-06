@@ -18,14 +18,14 @@ const props = defineProps({
 
 const circleColorClass = computed(() => {
   const colorClasses = {
-    '01': 'red-circle',
-    '02': 'blue-circle',
-    '03': 'green-circle',
-    '04': 'yellow-circle',
-    '05': 'orange-circle',
-    '06': 'purple-circle',
-    '07': 'pink-circle',
-    '08': 'cyan-circle'
+    '01': 'yellow',
+    '02': 'blue',
+    '03': 'red',
+    '04': 'purple',
+    '05': 'orange',
+    '06': 'green',
+    '07': 'brown',
+    '08': 'black'
   }
 
   return colorClasses[props.val] || 'default-color-circle'
@@ -82,36 +82,36 @@ const circleColorClass = computed(() => {
       }
     }
   }
-  .red-circle {
-    background-color: red;
+  .yellow {
+    background-color: #b78728;
   }
 
-  .blue-circle {
-    background-color: blue;
+  .blue {
+    background-color: #042072;
   }
 
-  .green-circle {
-    background-color: green;
+  .red {
+    background-color: #b1130f;
   }
 
-  .yellow-circle {
-    background-color: yellow;
+  .purple {
+    background-color: #1c1356;
   }
 
-  .orange-circle {
-    background-color: orange;
+  .orange {
+    background-color: #e94332;
   }
 
-  .purple-circle {
-    background-color: purple;
+  .green {
+    background-color: #045d57;
   }
 
-  .pink-circle {
-    background-color: pink;
+  .brown {
+    background-color: #4c1b27;
   }
 
-  .cyan-circle {
-    background-color: cyan;
+  .black {
+    background-color: #1b262e;
   }
 
   .default-color-circle {
