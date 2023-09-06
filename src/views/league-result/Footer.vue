@@ -1,31 +1,39 @@
 <script setup>
 import { ref } from 'vue'
+const props = defineProps(['current', 'pages', 'size', 'total'])
 
-const currentPage = ref(1)
-const pageSize = ref(20)
 const small = ref(false)
 const background = ref(true)
 const disabled = ref(false)
 
-const handleSizeChange = (val) => {
-  console.log(`${val} items per page`)
+const emit = defineEmits(['changePageSize', 'changePageNum'])
+
+// Use local refs to store and modify the values
+const localSize = ref(props.size ? props.size : 20)
+const localCurrent = ref(props.current ? props.current : 1)
+
+const handleChangePageSize = (pageSize) => {
+  localSize.value = pageSize
+  emit('changePageSize', pageSize)
 }
+
 const handleCurrentChange = (val) => {
-  console.log(`current page: ${val}`)
+  localCurrent.value = val
+  emit('changePageNum', val)
 }
 </script>
 <template>
   <div class="pagination-wrapper">
     <el-pagination
-      v-model:current-page="currentPage"
-      v-model:page-size="pageSize"
+      v-model:current-page="localCurrent"
+      v-model:page-size="localSize"
       :page-sizes="[20, 30, 40]"
       :small="small"
       :disabled="disabled"
       :background="background"
       layout="total, sizes, prev, pager, next, jumper"
-      :total="400"
-      @size-change="handleSizeChange"
+      :total="props.total"
+      @size-change="handleChangePageSize"
       @current-change="handleCurrentChange"
     />
   </div>

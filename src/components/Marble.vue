@@ -1,18 +1,36 @@
-<script setup>
-const props = defineProps(['size'])
-const { size } = props
-console.log(size)
-</script>
-
 <template>
   <div class="marble">
-    <div :class="['outer-circle', { small: size }]">
+    <div :class="['outer-circle', circleColorClass, { small: size }]">
       <div :class="['inner-circle', { small: size }]">
-        <p class="value">01</p>
+        <p class="value">{{ val }}</p>
       </div>
     </div>
   </div>
 </template>
+
+<script setup>
+import { defineProps, computed } from 'vue'
+
+const props = defineProps({
+  size: String,
+  val: String
+})
+
+const circleColorClass = computed(() => {
+  const colorClasses = {
+    '01': 'red-circle',
+    '02': 'blue-circle',
+    '03': 'green-circle',
+    '04': 'yellow-circle',
+    '05': 'orange-circle',
+    '06': 'purple-circle',
+    '07': 'pink-circle',
+    '08': 'cyan-circle'
+  }
+
+  return colorClasses[props.val] || 'default-color-circle'
+})
+</script>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/global.scss';
@@ -23,7 +41,6 @@ console.log(size)
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    background-color: red;
     @include flex-centralize;
 
     @include slim-mobile {
@@ -64,6 +81,41 @@ console.log(size)
         }
       }
     }
+  }
+  .red-circle {
+    background-color: red;
+  }
+
+  .blue-circle {
+    background-color: blue;
+  }
+
+  .green-circle {
+    background-color: green;
+  }
+
+  .yellow-circle {
+    background-color: yellow;
+  }
+
+  .orange-circle {
+    background-color: orange;
+  }
+
+  .purple-circle {
+    background-color: purple;
+  }
+
+  .pink-circle {
+    background-color: pink;
+  }
+
+  .cyan-circle {
+    background-color: cyan;
+  }
+
+  .default-color-circle {
+    background-color: gray; /* Default color for unknown values */
   }
 }
 </style>

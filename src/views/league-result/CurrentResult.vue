@@ -1,7 +1,18 @@
 <script setup>
 import Marble from '@/components/Marble.vue'
-</script>
+import { ref, watch } from 'vue'
 
+const props = defineProps(['name', 'createTime', 'result', 'videoUrl'])
+const results = ref([])
+
+// Create a watcher for props.result
+watch(
+  () => props.result,
+  (newResult) => {
+    results.value = newResult ? newResult.split(',') : []
+  }
+)
+</script>
 <template>
   <div class="current-result">
     <div class="result-text">
@@ -9,18 +20,15 @@ import Marble from '@/components/Marble.vue'
         <font-awesome-icon icon="satellite-dish" beat />
         live
       </div>
-      <div class="result-info">Issue: <span> 20230931</span></div>
-      <div class="result-info">deadline: <span> 2023-09-03 10:16:45</span></div>
+      <div class="result-info">
+        Issue: <span> {{ name }}</span>
+      </div>
+      <div class="result-info">
+        start time: <span> {{ createTime }}</span>
+      </div>
 
       <div class="marbles-wrapper">
-        <Marble />
-        <Marble />
-        <Marble />
-        <Marble />
-        <Marble />
-        <Marble />
-        <Marble />
-        <Marble />
+        <Marble v-for="(result, i) in results" :key="i" :val="result"></Marble>
       </div>
     </div>
     <div class="result-timer">

@@ -21,7 +21,6 @@ const Trans = {
     const userLocale = localStorage.getItem("user-locale");
     
     if (userLocale && this.supportedLocales.includes(userLocale)) {
-      console.log(userLocale)
       this.currentLocale = userLocale;
       locale = userLocale
     } else {
@@ -39,7 +38,6 @@ const Trans = {
       // Update user-locale in localStorage.
       localStorage.setItem("user-locale", this.currentLocale );
     }
-    console.log(this.currentLocale)
     // Set the lang attribute for the HTML element.
     document.querySelector("html").setAttribute("lang", this.currentLocale ? this.currentLocale : locale);
   }

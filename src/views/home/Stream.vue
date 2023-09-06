@@ -8,7 +8,7 @@
         <p class="caption">description.vsdfavgb sdfgsd wsdgasdgasdgasdf sdfgbwdfg wr gwrgawr</p>
       </div>
       <div class="live">
-        <font-awesome-icon icon="satellite-dish" />
+        <font-awesome-icon icon="satellite-dish" beat />
         Live
       </div>
     </div>
@@ -39,7 +39,7 @@
 
     .caption {
       font-size: 12px;
-      height: 36px;
+      height: 34px;
       overflow: hidden;
       text-overflow: ellipsis;
       //   white-space: pre-wrap;

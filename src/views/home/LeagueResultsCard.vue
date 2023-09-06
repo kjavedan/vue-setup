@@ -22,6 +22,11 @@ import Result from './Result.vue'
   box-shadow: $box-shadow;
   padding: 1.5rem;
   overflow-y: scroll;
+  display: none;
+
+  @include pc {
+    display: block;
+  }
   @include large-screen {
     height: 355px;
   }

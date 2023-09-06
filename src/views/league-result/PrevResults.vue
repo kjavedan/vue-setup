@@ -1,8 +1,10 @@
 <script setup>
 import PrevResult from './PrevResult.vue'
+const props = defineProps(['records'])
 </script>
 <template>
   <div class="prev-results">
+    <!-- This only appears in pc size screen -->
     <div class="sections-title">
       <div class="info-titles">
         <p>isuue</p>
@@ -13,20 +15,16 @@ import PrevResult from './PrevResult.vue'
       <p class="operate-title">Operate</p>
     </div>
     <div class="results-content-wrapper">
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
-      <PrevResult></PrevResult>
+      <PrevResult
+        v-for="record in records"
+        :key="record.id"
+        :name="record.name"
+        :createTime="record.createTime"
+        :endTime="record.endTime"
+        :startTime="record.startTime"
+        :videoUrl="record.videoUrl"
+        :result="record.result"
+      ></PrevResult>
     </div>
   </div>
 </template>
