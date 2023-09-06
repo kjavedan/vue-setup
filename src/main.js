@@ -12,10 +12,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import {   faSatelliteDish } from '@fortawesome/free-solid-svg-icons'
+import {   faSatelliteDish, faPlay } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faSatelliteDish)
+library.add(faSatelliteDish, faPlay)
 
 
 import App from './App.vue'

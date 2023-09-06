@@ -1,13 +1,13 @@
 <script setup>
 import CurrentResult from './league-result/CurrentResult.vue'
-import PrevResult from './league-result/PrevResult.vue'
+import PrevResults from './league-result/PrevResults.vue'
 import Pagination from './league-result/Footer.vue'
 </script>
 
 <template>
   <div class="container">
     <CurrentResult> </CurrentResult>
-    <PrevResult></PrevResult>
+    <PrevResults></PrevResults>
     <Pagination></Pagination>
   </div>
 </template>
