@@ -44,7 +44,7 @@ const handleSelect = (key, keyPath) => {
 
 .header {
   height: 100px;
-  border: solid;
+  // border: solid;
 
   @include tablet {
     height: 130px;
@@ -65,16 +65,17 @@ const handleSelect = (key, keyPath) => {
     }
     .language-switcher {
       width: 100px;
+      margin-bottom: 5px;
+      @include pc {
+        margin-block: unset;
+      }
     }
   }
 
   .el-menu {
     background-color: $bg-nav-color;
     border-radius: 8px;
-    box-shadow:
-      rgba(0, 0, 0, 0.4) 0px 2px 4px,
-      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    box-shadow: $box-shadow;
     width: 100%;
     border-bottom: none;
     @include flex-row-space-around;

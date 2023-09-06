@@ -1,19 +1,23 @@
+<script setup>
+const props = defineProps(['size'])
+const { size } = props
+console.log(size)
+</script>
+
 <template>
   <div class="marble">
-    <div class="outer-circle">
-      <div class="inner-circle">
+    <div :class="['outer-circle', { small: size }]">
+      <div :class="['inner-circle', { small: size }]">
         <p class="value">01</p>
       </div>
     </div>
   </div>
 </template>
 
-<script setup></script>
-
 <style lang="scss" scoped>
 @import '@/assets/scss/global.scss';
 .marble {
-  border: solid;
+  // border: solid;
 
   .outer-circle {
     height: 30px;
@@ -29,6 +33,11 @@
     @include pc {
       height: 40px;
       width: 40px;
+
+      &.small {
+        height: 23px;
+        width: 23px;
+      }
     }
 
     .inner-circle {
@@ -48,6 +57,11 @@
       @include pc {
         height: 25px;
         width: 25px;
+        &.small {
+          height: 15px;
+          width: 15px;
+          font-size: 10px;
+        }
       }
     }
   }

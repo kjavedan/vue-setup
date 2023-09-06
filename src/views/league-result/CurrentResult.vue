@@ -52,10 +52,7 @@ import Marble from '@/components/Marble.vue'
   // height: 280px;
   background-color: $bg-card-color;
   border-radius: $border-radius;
-  box-shadow:
-    rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow: $box-shadow;
   padding: 1.5rem 1rem;
 
   @include tablet {

@@ -36,7 +36,7 @@ const handleCurrentChange = (val) => {
 
 .pagination-wrapper {
   position: relative;
-  border: solid 1px blue;
+  // border: solid 1px blue;
   width: 100%;
   margin-top: 2rem;
   overflow-x: scroll;

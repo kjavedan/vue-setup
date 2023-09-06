@@ -37,10 +37,7 @@ import PrevResult from './PrevResult.vue'
   position: relative;
   background-color: $bg-card-color;
   border-radius: $border-radius;
-  box-shadow:
-    rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow: $box-shadow;
   padding: 0rem 1rem;
   margin-top: 1rem;
   height: 45vh;
@@ -53,7 +50,7 @@ import PrevResult from './PrevResult.vue'
   }
 
   .sections-title {
-    border: solid 1px blue;
+    // border: solid 1px blue;
     display: none;
     @include pc {
       display: block;

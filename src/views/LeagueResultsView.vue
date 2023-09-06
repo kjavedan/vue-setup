@@ -15,7 +15,7 @@ import Pagination from './league-result/Footer.vue'
 <style lang="scss" scoped>
 @import '@/assets/scss/global.scss';
 .container {
-  border: solid 1px rgb(255, 255, 255);
+  // border: solid 1px rgb(255, 255, 255);
   width: 100%;
   padding: 0;
   margin-top: 1rem;

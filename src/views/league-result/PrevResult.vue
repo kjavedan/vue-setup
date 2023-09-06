@@ -47,7 +47,7 @@ import Marble from '@/components/Marble.vue'
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   border-bottom: solid gray;
-  border: solid 1px yellow;
+  // border: solid 1px yellow;
 
   @include pc {
     @include flex-row-space-between;
@@ -56,7 +56,7 @@ import Marble from '@/components/Marble.vue'
     margin-bottom: 0.5rem;
 
     .info {
-      border: solid 1px red;
+      // border: solid 1px red;
       width: 50%;
       height: 100%;
       @include flex-row-space-between;
@@ -93,7 +93,7 @@ import Marble from '@/components/Marble.vue'
   }
   .marble-result {
     margin-top: 10px;
-    border: solid 1px blue;
+    // border: solid 1px blue;
     .marbles-wrapper {
       @include flex-row;
       gap: 2px;
@@ -106,7 +106,7 @@ import Marble from '@/components/Marble.vue'
     margin-top: 2rem;
 
     @include pc {
-      border: solid 1px red;
+      // border: solid 1px red;
       width: 90px;
       margin-top: unset;
     }
@@ -117,10 +117,7 @@ import Marble from '@/components/Marble.vue'
       padding: 1rem;
       width: 100%;
       height: 45px;
-      box-shadow:
-        rgba(0, 0, 0, 0.4) 0px 2px 4px,
-        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+      box-shadow: $box-shadow;
       border: none;
       outline: none;
       border-radius: 6px;

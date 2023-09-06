@@ -12,7 +12,7 @@ import Navbar from '@/components/Navbar.vue'
 <style scoped lang="scss">
 @import '@/assets/scss/global.scss';
 .container {
-  border: solid 1px white;
+  // border: solid 1px white;
   padding: 0.5rem;
   width: 95%;
   // height: 100vh;
