@@ -3,14 +3,14 @@ import Marble from '@/components/Marble.vue'
 </script>
 <template>
   <div class="result">
-    <h5 class="title">League Result</h5>
+    <h5 class="title">{{ $t('leagueResults.info') }}</h5>
     <div class="info">
       <p>
-        issue:
+        {{ $t('leagueResults.issue') }}:
         <span> 43546854 </span>
       </p>
-      <p>start: 2023-09-03 10:13:30</p>
-      <p>end: 2023-09-03 10:13:30</p>
+      <p>{{ $t('leagueResults.startingTime') }}: 2023-09-03 10:13:30</p>
+      <p>{{ $t('leagueResults.endTime') }}: 2023-09-03 10:13:30</p>
     </div>
     <div class="marbles-wrapper">
       <Marble size="small"></Marble>
@@ -33,7 +33,9 @@ import Marble from '@/components/Marble.vue'
   border-bottom: solid 1px gray;
   height: fit-content;
   .title {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
+    color: black;
+    font-size: 1rem;
   }
   .info {
     text-transform: capitalize;

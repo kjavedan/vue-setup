@@ -2,27 +2,26 @@
 import Marble from '@/components/Marble.vue'
 const props = defineProps(['name', 'createTime', 'endTime', 'startTime', 'videoUrl', 'result'])
 const results = props.result ? props.result.split(',') : null
-console.log(results)
 </script>
 <template>
   <div class="result">
     <div class="info">
-      <h3 class="title">info</h3>
+      <h3 class="title">{{ $t('leagueResults.info') }}</h3>
       <div>
-        <span> Issue: </span>
+        <span> {{ $t('leagueResults.issue') }}: </span>
         {{ name }}
       </div>
       <p>
-        <span> start: </span>
+        <span>{{ $t('leagueResults.startingTime') }}: </span>
         {{ startTime ? startTime : '----------------------' }}
       </p>
       <p>
-        <span> ends: </span>
+        <span> {{ $t('leagueResults.endTime') }}: </span>
         {{ endTime ? endTime : '----------------------' }}
       </p>
     </div>
     <div class="marble-result">
-      <h3 class="title">Result</h3>
+      <h3 class="title">{{ $t('leagueResults.result') }}</h3>
       <div class="marbles-wrapper">
         <Marble v-for="(result, i) in results" :key="i" :val="result"></Marble>
       </div>
@@ -30,7 +29,7 @@ console.log(results)
     <div class="operate">
       <el-button>
         <font-awesome-icon icon="fa-solid fa-play" bounce />
-        <span> playback </span>
+        <span> {{ $t('leagueResults.playback') }} </span>
       </el-button>
     </div>
   </div>

@@ -7,12 +7,12 @@ const props = defineProps(['records'])
     <!-- This only appears in pc size screen -->
     <div class="sections-title">
       <div class="info-titles">
-        <p>isuue</p>
-        <p>start</p>
-        <p>end</p>
+        <p>{{ $t('leagueResults.issue') }}</p>
+        <p>{{ $t('leagueResults.startingTime') }}</p>
+        <p>{{ $t('leagueResults.endTime') }}</p>
       </div>
-      <p class="marbles-title">Result</p>
-      <p class="operate-title">Operate</p>
+      <p class="marbles-title">{{ $t('leagueResults.result') }}</p>
+      <p class="operate-title">{{ $t('leagueResults.operate') }}</p>
     </div>
     <div class="results-content-wrapper">
       <PrevResult

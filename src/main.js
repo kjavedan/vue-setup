@@ -22,12 +22,13 @@ import App from './App.vue'
 import router from './router'
 import i18n from './i18n'
 import ElementPlus from 'element-plus'
+import zhCn from 'element-plus/dist/locale/zh-cn'
 
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
 app.use(i18n)
-app.use(ElementPlus)
+app.use(ElementPlus, { locale: zhCn })
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount('#app')

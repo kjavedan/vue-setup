@@ -1,5 +1,6 @@
 <script setup>
 import Marble from '@/components/Marble.vue'
+import Clock from './Clock.vue'
 import { ref, watch } from 'vue'
 
 const props = defineProps(['name', 'createTime', 'result', 'videoUrl'])
@@ -18,38 +19,22 @@ watch(
     <div class="result-text">
       <div class="live">
         <font-awesome-icon icon="satellite-dish" beat />
-        live
+        <span>
+          {{ $t('leagueResults.live') }}
+        </span>
       </div>
       <div class="result-info">
-        Issue: <span> {{ name }}</span>
+        {{ $t('leagueResults.issue') }}: <span> {{ name }}</span>
       </div>
       <div class="result-info">
-        start time: <span> {{ createTime }}</span>
+        {{ $t('leagueResults.startingTime') }}: <span> {{ createTime }}</span>
       </div>
 
       <div class="marbles-wrapper">
         <Marble v-for="(result, i) in results" :key="i" :val="result"></Marble>
       </div>
     </div>
-    <div class="result-timer">
-      <!-- houer -->
-      <div class="unit">
-        <span class="number">02</span>
-        <span class="text">hour</span>
-      </div>
-      <div>:</div>
-      <!-- minute -->
-      <div class="unit">
-        <span class="number">22</span>
-        <span class="text">hour</span>
-      </div>
-      <div>:</div>
-      <!-- seonc -->
-      <div class="unit">
-        <span class="number">11</span>
-        <span class="text">hour</span>
-      </div>
-    </div>
+    <Clock></Clock>
   </div>
 </template>
 
@@ -68,8 +53,11 @@ watch(
     padding: 1.5rem 2rem;
   }
   .live {
-    width: 50px;
-    height: 20px;
+    padding: 5px 15px;
+    width: fit-content;
+    span {
+      margin-left: 5px;
+    }
     @include flex-row-space-around;
     background-color: #d11919;
     border-radius: 2px;
@@ -77,8 +65,6 @@ watch(
     margin-bottom: 1rem;
 
     @include pc {
-      width: 70px;
-      height: 30px;
       font-size: 14px;
       font-weight: $font-weight-bold;
     }
@@ -97,41 +83,10 @@ watch(
   .marbles-wrapper {
     @include flex-row;
     margin-top: 1rem;
-    gap: 2px;
+    gap: 3px;
 
     @include pc {
       gap: 10px;
-    }
-  }
-
-  .result-timer {
-    height: 90px;
-    width: 100%;
-    background-color: black;
-    border-radius: $border-radius;
-    margin-top: 1rem;
-
-    @include flex-row-space-around;
-
-    @include tablet {
-      max-width: 450px;
-      height: 140px;
-      margin-left: 1rem;
-    }
-
-    @include large-screen {
-      margin-right: 100px;
-    }
-
-    font-size: 2rem;
-    font-weight: $font-weight-bold;
-    .unit {
-      @include flex-column-space-around;
-
-      .text {
-        font-size: 12px;
-        font-weight: 400;
-      }
     }
   }
 }

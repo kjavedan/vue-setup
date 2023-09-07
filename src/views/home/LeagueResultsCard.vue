@@ -3,6 +3,7 @@ import Result from './Result.vue'
 </script>
 <template>
   <div class="league-results-card">
+    <h4 class="title">{{ $t('leagueResults.result') }}</h4>
     <Result></Result>
     <Result></Result>
     <div class="see-arrow">
@@ -29,6 +30,12 @@ import Result from './Result.vue'
   }
   @include large-screen {
     height: 355px;
+  }
+
+  .title {
+    margin-bottom: 0.5rem;
+    color: $secondary-color;
+    font-size: 1.5rem;
   }
   .see-arrow {
     cursor: pointer;

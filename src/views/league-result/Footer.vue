@@ -1,6 +1,8 @@
 <script setup>
-import { ref } from 'vue'
-const props = defineProps(['current', 'pages', 'size', 'total'])
+import { ref, defineProps, defineEmits } from 'vue'
+import { ElConfigProvider } from 'element-plus'
+
+const { current, pages, size, total } = defineProps(['current', 'pages', 'size', 'total'])
 
 const small = ref(false)
 const background = ref(true)
@@ -9,8 +11,8 @@ const disabled = ref(false)
 const emit = defineEmits(['changePageSize', 'changePageNum'])
 
 // Use local refs to store and modify the values
-const localSize = ref(props.size ? props.size : 20)
-const localCurrent = ref(props.current ? props.current : 1)
+const localSize = ref(size || 20)
+const localCurrent = ref(current || 1)
 
 const handleChangePageSize = (pageSize) => {
   localSize.value = pageSize
@@ -22,21 +24,24 @@ const handleCurrentChange = (val) => {
   emit('changePageNum', val)
 }
 </script>
+
 <template>
-  <div class="pagination-wrapper">
-    <el-pagination
-      v-model:current-page="localCurrent"
-      v-model:page-size="localSize"
-      :page-sizes="[20, 30, 40]"
-      :small="small"
-      :disabled="disabled"
-      :background="background"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="props.total"
-      @size-change="handleChangePageSize"
-      @current-change="handleCurrentChange"
-    />
-  </div>
+  <el-config-provider :locale="locale">
+    <div class="pagination-wrapper">
+      <el-pagination
+        v-model:currentPage="localCurrent"
+        v-model:pageSize="localSize"
+        :page-sizes="[20, 30, 40]"
+        :small="small"
+        :disabled="disabled"
+        :background="background"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+        @size-change="handleChangePageSize"
+        @current-change="handleCurrentChange"
+      />
+    </div>
+  </el-config-provider>
 </template>
 
 <style lang="scss" scoped>

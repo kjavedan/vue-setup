@@ -9,7 +9,9 @@
       </div>
       <div class="live">
         <font-awesome-icon icon="satellite-dish" beat />
-        Live
+        <span>
+          {{ $t('leagueResults.live') }}
+        </span>
       </div>
     </div>
   </div>
@@ -46,13 +48,16 @@
       // border: solid 1px yellow;
     }
     .live {
-      width: 50px;
-      height: 20px;
+      padding: 3px 10px;
+      width: fit-content;
       @include flex-row-space-around;
       background-color: #d11919;
       border-radius: 2px;
       font-size: 12px;
       margin-bottom: 15px;
+      span {
+        margin-left: 5px;
+      }
     }
   }
 }

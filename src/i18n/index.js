@@ -21,7 +21,16 @@ const messages = {
       page: "页",
       itemsInTotal: "总共",
       itemsPerPage: "每页",
-      live: "直播"
+      live: "直播",
+      hour: " 小时",
+      minute: "分钟 ",
+      second: "秒",
+      info: '信息 '
+    },
+    footer:{
+      total: '总共',
+      page: '页',
+      goTo: '前往'
     }
   },
   tai: {
@@ -43,7 +52,16 @@ const messages = {
       page: "หน้า",
       itemsInTotal: "รวม",
       itemsPerPage: "ต่อหน้า",
-      live: "สตรีมมิงแบบสด"
+      live: "สตรีมมิงแบบสด",
+      hour: "ชั่วโมง",
+      minute: "นาที",
+      second: "วินาที",
+      info: 'ข้อมูล '
+    },
+    footer:{
+      total: 'รวม',
+      page: 'หน้า',
+      goTo: 'ไปที่'
     }
   },
   yue: {
@@ -65,7 +83,16 @@ const messages = {
       page: "trang",
       itemsInTotal: "Tổng cộng",
       itemsPerPage: "mỗi trang",
-      live: "video trực tiếp"
+      live: "video trực tiếp",
+      hour: "Giờ ",
+      minute: "Phút ",
+      second: "Giây ",
+      info: 'Thông tin'
+    },
+    footer:{
+      total: 'Tổng cộng',
+      page: 'Trang',
+      goTo: 'Đi đến'
     }
   }
 }
