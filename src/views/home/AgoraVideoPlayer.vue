@@ -1,13 +1,12 @@
 <template>
-  <div style="width: 100%; border: 1px solid black; background-color: black">
-    <div v-if="text" :style="{ marginTop: '10px', marginBottom: '10px' }">{{ text }}</div>
+  <div class="video-player" style="width: 100%; height: 100%; padding-top: 2.5%">
     <div ref="videoRef" :style="{ width, height }" />
   </div>
 </template>
 
 <script>
-const DEFAULT_WIDTH = '480px'
-const DEFAULT_HEIGHT = '320px'
+const DEFAULT_WIDTH = '100%'
+const DEFAULT_HEIGHT = '95%'
 </script>
 
 <script setup>
@@ -33,6 +32,10 @@ const props = defineProps({
     type: [String, Number],
     default: ''
   },
+  joined: {
+    type: Boolean,
+    default: false
+  },
   width: {
     type: String,
     default: DEFAULT_WIDTH
@@ -57,22 +60,35 @@ onMounted(() => {
 watch(
   () => props.videoTrack,
   (track, oldTrack) => {
-    console.log(track, videoRef.value, 'videoRefvideoRefvideoRefvideoRef')
+    console.log(
+      track,
+      videoRef.value,
+      'videoRefvideoRefvideoRefvideoRef0-------------------------------------------'
+    )
     if (track && videoRef.value) {
       track.play(videoRef.value)
+      videoTrack?.play()
     }
   }
 )
 
 watch(
-  () => props.audioTrack,
-  (track) => {
-    track?.play()
+  () => props, // Watch the entire props object
+  (newProps, oldProps) => {
+    console.log('-------------------Props updated---------------------:')
+    console.log('New props:', newProps)
+    // console.log('Old props:', oldProps)
+
+    // You can perform additional actions here if needed.
+  },
+  {
+    deep: true, // Enable deep watch to track nested objects/arrays within props
+    immediate: true // Trigger the watch immediately on component creation
   }
 )
 
 onMounted(() => {
-  console.log(videoTrack)
+  // console.log(videoTrack)
 })
 
 onUnmounted(() => {
@@ -80,3 +96,8 @@ onUnmounted(() => {
   audioTrack?.close()
 })
 </script>
+<style lang="scss">
+@import '@/assets/scss/global.scss';
+.video-player {
+}
+</style>

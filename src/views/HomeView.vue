@@ -51,8 +51,8 @@ const joinStream = (uid, channelName) => {
   getStreamToken(34563557, 'dashan_test01')
 }
 
-const handleUserPublished = async (user, mediaType) => {
-  await client.subscribe(user, mediaType)
+const handleUserPublished = (user, mediaType) => {
+  client.subscribe(user, mediaType)
   // delete remoteUsers.value[user.uid]
   remoteUsers[user.uid] = user
   console.log(remoteUsers, 'remoteUsers handleUserPublished11111111')
@@ -69,8 +69,11 @@ const handleJoined = (user) => {
   console.log('ran joined stream')
   // delete remoteUsers[user.uid]
   remoteUsers.value[user.uid] = user
-  console.log(remoteUsers, 'remoteUsers handleJoined')
-  // window.location.reload();
+  // console.log(remoteUsers, 'remoteUsers handleJoined')
+  // window.location.reload()
+  setTimeout(() => {
+    joined.value = true
+  }, 500)
 }
 
 const leaveStream = async () => {
@@ -132,13 +135,18 @@ onMounted(() => {
 })
 
 //--------------------------------------------watch----------------------------------
-watch([remoteUsers, joined, audioTrack, videoTrack, options], () => {
-  console.log(remoteUsers.value, 'remoteUsers.value')
-  console.log('audio: ' + audioTrack.value)
-  console.log('video: ' + videoTrack.value)
-  console.log('joined: ' + joined.value)
-  console.log(options.value, 'options.value')
-})
+watch(
+  () => remoteUsers,
+  (newVal, oldVal) => {
+    console.log('remote user got updated')
+    console.log(oldVal)
+    console.log(newVal)
+  },
+  {
+    deep: true,
+    immediate: true
+  }
+)
 </script>
 
 <template>
@@ -146,14 +154,14 @@ watch([remoteUsers, joined, audioTrack, videoTrack, options], () => {
     <div class="content">
       <div class="main-stream">
         <!-- The Live Stream Video will go here -->
-        <div v-if="Object.keys(remoteUsers).length">
-          <div class="text">Remote Users</div>
+        <div class="video-wrapper">
           <AgoraVideoPlayer
             v-for="item in remoteUsers"
             :key="item.uid"
             :videoTrack="item.videoTrack"
             :audioTrack="item.audioTrack"
             :text="item.uid"
+            :joined="joined"
           >
           </AgoraVideoPlayer>
         </div>
@@ -206,16 +214,16 @@ watch([remoteUsers, joined, audioTrack, videoTrack, options], () => {
     }
 
     .main-stream {
-      // border: solid 1px blue;
-      .local-player,
-      .remote-player {
-        width: 100%;
-        height: 100%;
-        max-height: 470px;
+      .video-wrapper {
         border-radius: $border-radius;
-        border: solid 1px white;
-        @include large-screen {
-          max-height: 570px;
+        background-color: black;
+        height: 250px;
+
+        @include tablet {
+          height: 350px;
+        }
+        @include pc {
+          height: 100%;
         }
       }
     }
@@ -224,7 +232,12 @@ watch([remoteUsers, joined, audioTrack, videoTrack, options], () => {
       height: auto;
       overflow-y: scroll;
       max-height: 100%;
-      // padding-bottom: 5rem;
+      @include pc {
+        max-height: 470px;
+      }
+      @include large-screen {
+        max-height: 600px;
+      }
     }
   }
 }
