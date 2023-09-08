@@ -17,15 +17,14 @@ const options = ref({
   // Pass your temp token here.
   token: '',
   // Set the user ID.
-  uid: 0,
+  uid: 34563557,
   // Set the user role
   role: 'audience'
 })
 
-const rtc = ref({
-  localAudioTrack: null,
-  localVideoTrack: null,
-  client: null
+const client = AgoraRTC.createClient({
+  mode: 'live',
+  codec: 'vp8'
 })
 
 const joined = ref(false)
@@ -37,12 +36,9 @@ console.log(remoteUsers)
 console.log(audioTrack)
 console.log(videoTrack)
 
-const initAgora = () => {
-  rtc.value.client = AgoraRTC.createClient({ mode: 'live', codec: 'vp8' })
-}
-
 // change the streams
 const handleClick = (id, uid, channelName) => {
+  console.log(id, uid, channelName, 'id, uid, channelName')
   liveStreamsData.value = liveStreamsData.value.map((item) =>
     item.id === id ? { ...item, selected: true } : { ...item, selected: false }
   )
@@ -52,30 +48,29 @@ const handleClick = (id, uid, channelName) => {
 
 const joinStream = (uid, channelName) => {
   console.log('join stream')
-  getStreamToken(uid, channelName)
+  getStreamToken(34563557, 'dashan_test01')
 }
 
 const handleUserPublished = async (user, mediaType) => {
-  console.log('ran handle published user')
-  await rtc.value.client.subscribe(user, mediaType)
-  delete remoteUsers.value[user.uid]
+  await client.subscribe(user, mediaType)
+  // delete remoteUsers.value[user.uid]
   remoteUsers[user.uid] = user
-  console.log(remoteUsers)
+  console.log(remoteUsers, 'remoteUsers handleUserPublished11111111')
 }
 
 const handleUserUnpublished = (user, mediaType) => {
-  console.log('ran user unpublished')
   if (mediaType == 'video') {
     delete remoteUsers.value[user.uid]
-    console.log(remoteUsers)
+    console.log(remoteUsers, 'handleUserUnpublished222222')
   }
 }
 
 const handleJoined = (user) => {
   console.log('ran joined stream')
-  delete remoteUsers[user.uid]
+  // delete remoteUsers[user.uid]
   remoteUsers.value[user.uid] = user
-  console.log(remoteUsers)
+  console.log(remoteUsers, 'remoteUsers handleJoined')
+  // window.location.reload();
 }
 
 const leaveStream = async () => {
@@ -88,9 +83,9 @@ const leaveStream = async () => {
     videoTrack.value = null
   }
   remoteUsers.value = {}
-  await rtc.value.client.leave()
+  await client.leave()
   joined.value = false
-  console.log(remoteUsers)
+  console.log(remoteUsers, 'leaveStream')
 }
 
 // --------------------------------------------API Functions-----------------------------------------
@@ -101,7 +96,8 @@ const fetchLiveStreamData = async () => {
     liveStreamsData.value = res.data.map((item, index) => ({ ...item, selected: index === 0 }))
 
     //Get Frist stream Token
-    getStreamToken(liveStreamsData.value[0].uid, liveStreamsData.value[0].channelName)
+    // getStreamToken(liveStreamsData.value[0].uid, liveStreamsData.value[0].channelName)
+    // getStreamToken(34563557, 'test01')
   } catch (err) {
     console.error(err)
   }
@@ -111,18 +107,18 @@ const getStreamToken = async (uid, channelName) => {
   try {
     const data = { uid, channelName }
     const res = await homePageServices.getStreamToken(data)
+    console.log(res, 'getStreamToken', uid, channelName)
     options.value.channel = channelName
     options.value.uid = uid
     options.value.token = res.data
     console.log('ran get stream token')
-    console.log(rtc.value)
-    rtc.value.client.setClientRole('audience', { level: 1 })
-    rtc.value.client.on('user-published', handleUserPublished)
+    client.setClientRole('audience', { level: 1 })
+    client.on('user-published', handleUserPublished)
     console.log('ran between')
-    rtc.value.client.on('user-unpublished', handleUserUnpublished)
-    console.log('ran after')
-    await rtc.value.client.join(options.value.appId, channelName, res.data, uid)
-    rtc.value.client.on('user-joined', handleJoined)
+    client.on('user-unpublished', handleUserUnpublished)
+    console.log('ran after', options.value.appId, channelName, res.data, uid)
+    await client.join(options.value.appId, channelName, res.data, 34563557)
+    client.on('user-joined', handleJoined)
   } catch (err) {
     console.log(err)
   }
@@ -131,18 +127,17 @@ const getStreamToken = async (uid, channelName) => {
 // ------------------------------------------------Mounted------------------------------------------
 onMounted(() => {
   // API Call to get the current live streams
+  // initAgora()
   fetchLiveStreamData()
-  initAgora()
 })
 
 //--------------------------------------------watch----------------------------------
-watch([remoteUsers, joined, audioTrack, videoTrack, rtc, options], () => {
-  console.log(remoteUsers.value)
+watch([remoteUsers, joined, audioTrack, videoTrack, options], () => {
+  console.log(remoteUsers.value, 'remoteUsers.value')
   console.log('audio: ' + audioTrack.value)
   console.log('video: ' + videoTrack.value)
   console.log('joined: ' + joined.value)
-  console.log(options.value)
-  console.log(rtc.value)
+  console.log(options.value, 'options.value')
 })
 </script>
 
@@ -151,6 +146,20 @@ watch([remoteUsers, joined, audioTrack, videoTrack, rtc, options], () => {
     <div class="content">
       <div class="main-stream">
         <!-- The Live Stream Video will go here -->
+        <div v-if="Object.keys(remoteUsers).length">
+          <div class="text">Remote Users</div>
+          <AgoraVideoPlayer
+            v-for="item in remoteUsers"
+            :key="item.uid"
+            :videoTrack="item.videoTrack"
+            :audioTrack="item.audioTrack"
+            :text="item.uid"
+          >
+          </AgoraVideoPlayer>
+        </div>
+        <!-- <div v-else key="1" style="height: 100%">
+          <video src="" controls autoplay preload width="100%" height="100%"></video>
+        </div> -->
       </div>
       <div class="related-streams">
         <div v-if="liveStreamsData.length">
