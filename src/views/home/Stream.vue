@@ -1,10 +1,29 @@
-<script setup></script>
+<script setup>
+import { defineProps, defineEmits } from 'vue'
+const { id, selected, channelName, name, userId, uid, createTime, area, updateTime } = defineProps([
+  'id',
+  'selected',
+  'channelName',
+  'name',
+  'userId',
+  'uid',
+  'createTime',
+  'area',
+  'updateTime'
+])
+
+const emit = defineEmits(['handleStreamClick'])
+
+const handleClick = () => {
+  emit('handleStreamClick', id, uid, channelName)
+}
+</script>
 <template>
-  <div class="stream">
+  <div :class="['stream', { selected }]" @click="handleClick">
     <img src="@/assets/images/2.png" alt="" />
     <div class="text">
       <div class="title">
-        <h4>Title</h4>
+        <h4>{{ name }}</h4>
         <p class="caption">description.vsdfavgb sdfgsd wsdgasdgasdgasdf sdfgbwdfg wr gwrgawr</p>
       </div>
       <div class="live">
@@ -20,13 +39,19 @@
 <style lang="scss" scoped>
 @import '@/assets/scss/global.scss';
 .stream {
+  cursor: pointer;
   max-height: 120px;
   // border: solid 1px white;
   display: flex;
   margin-bottom: 0.5rem;
   overflow: hidden;
+
+  &.selected {
+    border: 3px solid $secondary-color;
+    border-radius: $border-radius;
+  }
   img {
-    height: 100px;
+    height: 110px;
     max-width: 150px;
     border-radius: $border-radius;
   }
@@ -54,7 +79,7 @@
       background-color: #d11919;
       border-radius: 2px;
       font-size: 12px;
-      margin-bottom: 15px;
+      margin-bottom: 5px;
       span {
         margin-left: 5px;
       }

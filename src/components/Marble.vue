@@ -1,13 +1,3 @@
-<template>
-  <div class="marble">
-    <div :class="['outer-circle', circleColorClass, { small: size }]">
-      <div :class="['inner-circle', { small: size }]">
-        <p class="value">{{ val }}</p>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { defineProps, computed } from 'vue'
 
@@ -31,6 +21,16 @@ const circleColorClass = computed(() => {
   return colorClasses[props.val] || 'default-color-circle'
 })
 </script>
+
+<template>
+  <div class="marble">
+    <div :class="['outer-circle', circleColorClass, { small: size }]">
+      <div :class="['inner-circle', { small: size }]">
+        <p class="value">{{ val }}</p>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/global.scss';
